@@ -10,6 +10,14 @@ RUN apt-get update && apt-get install -y \
     portaudio19-dev \
     ffmpeg \
     && rm -rf /var/lib/apt/lists/*
+# Install system dependencies for PyAudio
+RUN apt-get update && \
+    apt-get install -y \
+    build-essential \
+    libportaudio2 \
+    portaudio19-dev \
+    libsndfile1
+
 
 # Set working directory
 WORKDIR /app
