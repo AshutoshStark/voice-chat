@@ -5,19 +5,15 @@ FROM python:3.11
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Install system dependencies for PyAudio
+# Update package list and install system dependencies for pyAudio
 RUN apt-get update && apt-get install -y \
-    portaudio19-dev \
-    ffmpeg \
-    && rm -rf /var/lib/apt/lists/*
-# Install system dependencies for PyAudio
-RUN apt-get update && \
-    apt-get install -y \
     build-essential \
     libportaudio2 \
     portaudio19-dev \
-    libsndfile1
-
+    libsndfile1 \
+    gcc \
+    g++ \
+    python3-dev
 
 # Set working directory
 WORKDIR /app
